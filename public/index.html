@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image Resizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <div class="bg"></div>
+  <header class="header">
+    <h1>Image Resizer</h1>
+    <p>Visually-lossless downscaling & conversion with smart size guard.</p>
+  </header>
+
+  <main class="container">
+    <section class="uploader glass">
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" accept="image/*" hidden>
+        <div class="drop-content">
+          <div class="icon">⬆</div>
+          <h2>Drop image here</h2>
+          <p>or <button id="pickBtn" class="linklike">choose from files</button></p>
+          <p class="hint">Max 25 MB</p>
+        </div>
+      </div>
+      <div id="fileInfo" class="file-info hidden"></div>
+    </section>
+
+    <section class="controls glass">
+      <div class="grid">
+        <label>Format
+          <select id="format">
+            <option value="webp">WebP</option>
+            <option value="avif">AVIF</option>
+            <option value="jpeg">JPEG</option>
+            <option value="png">PNG</option>
+          </select>
+        </label>
+        <label>Quality
+          <input type="range" id="quality" min="1" max="100" value="82">
+          <span id="qualityVal">82</span>
+        </label>
+        <label>Lossless
+          <input type="checkbox" id="lossless">
+        </label>
+        <label>Width (px)
+          <input type="number" id="width" placeholder="e.g. 1600">
+        </label>
+        <label>Height (px)
+          <input type="number" id="height" placeholder="auto if blank">
+        </label>
+        <label>Fit
+          <select id="fit">
+            <option>inside</option>
+            <option>cover</option>
+            <option>contain</option>
+            <option>fill</option>
+            <option>outside</option>
+          </select>
+        </label>
+        <label>Allow Upscale
+          <input type="checkbox" id="enlarge">
+        </label>
+        <label>Preserve metadata
+          <input type="checkbox" id="preserveMeta">
+        </label>
+        <label>Never bigger than original
+          <input type="checkbox" id="noBigger" checked>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="processBtn" class="primary">Process</button>
+        <button id="downloadBtn" class="ghost" disabled>Download</button>
+      </div>
+      <div id="status" class="status"></div>
+    </section>
+
+    <section class="preview glass">
+      <div class="preview-grid">
+        <div>
+          <h3>Original</h3>
+          <img id="previewIn" alt="Original preview">
+          <div class="meta" id="metaIn">—</div>
+        </div>
+        <div>
+          <h3>Result</h3>
+          <img id="previewOut" alt="Output preview">
+          <div class="meta" id="metaOut">—</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="https://github.com/Nauvvi1" target="_blank" rel="noreferrer">GitHub</a> · MIT Nauvvi1
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+
+</html>
